@@ -14,10 +14,10 @@ show databases;
 create table tbFuncionarios(
 idFuncionarios int not null auto_increment,
 nome varchar(100) not null,
-cpf char(14) unique,
+cpf char(14) not null unique,
 email varchar(100) unique,
 sexo char(1) default 'F' check(sexo in('F','M')),
-salario decimal(9,2),
+salario decimal(9,2) default 0 check(salario >=0),
 nascimento date,
 telCelular char(10),
 primary key(idFuncionarios)
@@ -25,7 +25,7 @@ primary key(idFuncionarios)
 
 create table tbUsuarios(
 idUsuarios int not null auto_increment,
-nome varchar(50) not null,
+nome varchar(50) not null unique,
 senha varchar(10) not null,
 idFuncionarios int not null,
 primary key(idUsuarios),
