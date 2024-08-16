@@ -1,14 +1,18 @@
 -- apagar banco de dados
 drop database dbCantina;
 
+
 -- criar banco de dados
 create database dbCantina;
+
 
 -- acessar o banco de dados
 use dbCantina;
 
+
 -- visualizar banco de dados
 show databases;
+
 
 -- criar tabelas no banco de dados
 create table tbFuncionarios(
@@ -47,6 +51,7 @@ idFuncionario int not null,
 primary key(idUsuario),
 foreign key(idFuncionario)references tbFuncionarios(idFuncionario)
 );
+
 create table tbProdutos(
 idProduto int not null auto_increment,
 descricao varchar(100),
@@ -74,8 +79,10 @@ foreign key(idCliente)references tbClientes(idCliente),
 foreign key(idProduto)references tbProdutos(idProduto)
 );
 
+
 -- visualizar tabelas
 show tables;
+
 
 -- visualizar estrutura das tabelas
 desc tbFuncionarios;
@@ -84,6 +91,7 @@ desc tbClientes;
 desc tbUsuarios;
 desc tbProdutos;
 desc tbVendas;
+
 
 -- inserir registros nas tabelas
 
@@ -104,6 +112,7 @@ insert into tbVendas(dataVenda,horaVenda,quantidade,idUsuario,idCliente,idProdut
 insert into tbVendas(dataVenda,horaVenda,quantidade,idUsuario,idCliente,idProduto)values('2024/08/16','20:03',10,2,1,1);
 insert into tbVendas(dataVenda,horaVenda,quantidade,idUsuario,idCliente,idProduto)values('2024/08/16','20:05',1,1,2,4);
 
+
 -- visualizar os registros das tabelas
 
 select * from tbFuncionarios;
@@ -112,3 +121,14 @@ select * from tbClientes;
 select * from tbUsuarios;
 select * from tbProdutos;
 select * from tbVendas;
+
+
+-- alterar registros das tabelas
+update tbProdutos set descricao = 'Esfiha', valor = 5.00 where idProduto = 1;
+update tbProdutos set descricao = 'Batata Frita', valor = 10.00 where idProduto = 2;
+update tbProdutos set descricao = 'Pastel Especial', valor = 18.00 where idProduto = 3;
+update tbProdutos set descricao = 'Bolinho de Queijo', valor = 4.00 where idProduto = 4;
+
+
+-- visualizar registros alterados
+select * from tbProdutos;
