@@ -132,3 +132,32 @@ update tbProdutos set descricao = 'Bolinho de Queijo', valor = 4.00 where idProd
 
 -- visualizar registros alterados
 select * from tbProdutos;
+
+
+
+-- Integridade e Consistência
+
+-- visualizar o nome do produto e do fornecedor relacionado
+
+select p.descricao as "Produto", f.nome as "Fornecedor"
+from tbProdutos as p
+inner join tbFornecedores as f
+on p.idFornecedor = f.idFornecedor;
+
+-- visualizar o nome do usuário, do produto e do cliente relacionado 
+ 
+select u.nome "Usuario", p.descricao "Produto", c.nome "Cliente" 
+from tbVendas as v
+inner join tbUsuarios as u
+on v.idUsuario = u.idUsuario
+inner join tbProdutos as p
+on v.idProduto = p.idProduto
+inner join tbClientes as c
+on v.idCliente = c.idCliente;
+
+-- visualizar o nome do usuário e do funcionario relacionado
+
+select u.nome as "Usuario", f.nome "Funcionario"
+from tbUsuarios as u
+inner join tbFuncionarios as f
+on u.idFuncionario = f.idFuncionario;
